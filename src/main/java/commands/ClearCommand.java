@@ -8,6 +8,10 @@ import utility.TerminalManager;
  * Команда, очищающая коллекцию.
  *
  * <p> Эта команда не принимает аргументов и удаляет все элементы из коллекции, очищая ее. </p>
+ *
+ * @author Aerosolus
+ * @version 1.0
+ * @since 1.0
  */
 public class ClearCommand extends AbstractCommand {
 
