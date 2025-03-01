@@ -8,8 +8,8 @@ package exceptions;
  * которые делают его выполнение невозможным. </p>
  *
  * @author Aerosolus
- * @version 1.0
+ * @version 1.1
  * @since 1.0
  */
-public class InvalidScriptException extends Exception {
+public class InvalidScriptException extends IllegalArgumentException {
 }

@@ -11,7 +11,6 @@ target/
 *.iws
 *.iml
 *.ipr
-advice.txt
 
 ### Eclipse ###
 .apt_generated

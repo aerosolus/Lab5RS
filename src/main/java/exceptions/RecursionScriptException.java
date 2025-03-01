@@ -7,8 +7,8 @@ package exceptions;
  * что может привести к бесконечному выполнению и переполнению стека. </p>
  *
  * @author Aerosolus
- * @version 1.0
+ * @version 1.1
  * @since 1.0
  */
-public class RecursionScriptException extends Exception {
+public class RecursionScriptException extends IllegalStateException {
 }

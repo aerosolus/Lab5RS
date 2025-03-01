@@ -2,7 +2,7 @@ package utility;
 
 import data.*;
 import exceptions.InvalidInputException;
-import inputOutput.TerminalOutputManager;
+import managers.OutputManager;
 
 import java.io.*;
 import java.text.ParseException;
@@ -12,12 +12,25 @@ import java.util.*;
 import static utility.CSVWriter.FILE_HEADER;
 
 /**
- * В коллекцию будут добавлены только те объекты, у которых все поля имеют корректные значения.
- * В случае наличия данных, которые нельзя обработать, объект пропускается и не добавляется в коллекцию.
+ * Класс, предназначенный для чтения коллекции объектов {@link Worker} из CSV-файла.
+ * В коллекцию добавляются только те объекты, у которых все поля имеют корректные значения.
+ * Если данные в файле некорректны, объект пропускается и не добавляется в коллекцию.
+ *
+ * @author Aerosolus
+ * @version 1.0
  * @since 1.2
  */
 public class CSVReader {
 
+    /**
+     * Читает коллекцию объектов {@link Worker} из CSV-файла.
+     * Проверяет на корректность значение каждого поля объекта перед добавлением в коллекцию.
+     * Если файл не найден, пуст или содержит некорректные данные, программа завершается с соответствующим сообщением об ошибке.
+     *
+     * @param fileName Путь к CSV-файлу.
+     * @return Коллекция объектов {@link Worker}, прошедших валидацию.
+     * @throws IOException Если произошла ошибка ввода-вывода при чтении файла.
+     */
     public Vector<Worker> readCollectionFromFile(String fileName) throws IOException {
         Vector<Worker> workersVector = new Vector<>();
         if (!fileName.isEmpty()) {
@@ -110,18 +123,24 @@ public class CSVReader {
                     throw new InvalidInputException();
                 }
             } catch (FileNotFoundException exception) {
-                TerminalOutputManager.printError("Файл не найден или доступ запрещен.\nРабота программы завершена");
+                OutputManager.printError("Файл не найден или доступ запрещен");
+                OutputManager.print("\nРабота программы завершена.");
                 System.exit(1);
             } catch (InvalidInputException e) {
-                TerminalOutputManager.printError("Использован неверный файл для загрузки данных коллекции");
+                OutputManager.printError("Использован неверный файл для загрузки данных коллекции");
+                OutputManager.print("\nРабота программы завершена.");
+                System.exit(1);
             } catch (NoSuchElementException exception) {
-                TerminalOutputManager.printError("Файл пуст.\nРабота программы завершена");
+                OutputManager.printError("Файл пуст");
+                OutputManager.print("\nРабота программы завершена");
                 System.exit(1);
             } catch (NullPointerException exception) {
-                TerminalOutputManager.printError("Неверный формат коллекции в файле.\nРабота программы завершена");
+                OutputManager.printError("Неверный формат коллекции в файле");
+                OutputManager.print("\nРабота программы завершена.");
                 System.exit(1);
             } catch (IllegalStateException exception) {
-                TerminalOutputManager.printError("Непредвиденная ошибка.\nРабота программы завершена");
+                OutputManager.printError("Непредвиденная ошибка");
+                OutputManager.print("\nРабота программы завершена.");
                 System.exit(1);
             }
         }

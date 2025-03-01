@@ -313,7 +313,13 @@ public class Worker implements Comparable<Worker> {
      * если первый аргумент меньше, равен или больше второго соответственно.
      */
     public int compareTo(Worker o) {
-        return this.name.toLowerCase().compareTo(o.name.toLowerCase());
+        int nameComparison = this.name.compareTo(o.name);
+        if (nameComparison != 0) {
+            return nameComparison; // Если имена разные, возвращаем результат сравнения по именам
+        }
+
+        // В противном случае выполним сравнение по персональным параметрам
+        return this.person.compareTo(o.person);
     }
 
     /**

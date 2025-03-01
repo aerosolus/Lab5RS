@@ -1,17 +1,25 @@
 package utility;
 
 import data.Worker;
-import inputOutput.TerminalOutputManager;
+import managers.OutputManager;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Vector;
 
 /**
+ * Класс, предназначенный для записи коллекции объектов {@link Worker} в CSV-файл.
+ * Каждая строка файла соответствует одному объекту {@link Worker}, а поля разделены символом табуляции.
+ *
+ * @author Aerosolus
+ * @version 1.0
  * @since 1.2
  */
 public class CSVWriter {
 
+    /**
+     * Заголовок CSV-файла, содержащий названия полей.
+     */
     static final String FILE_HEADER = "ID"
             + "\t" + "NAME"
             + "\t" + "X"
@@ -25,6 +33,14 @@ public class CSVWriter {
             + "\t" + "PERSON_HAIR_COLOR"
             + "\t" + "NATIONALITY" + "\n";
 
+    /**
+     * Записывает коллекцию объектов {@link Worker} в CSV-файл.
+     * Если файл не может быть открыт или путь к файлу некорректен, выводится сообщение об ошибке.
+     *
+     * @param workersCollection Коллекция объектов {@link Worker} для записи.
+     * @param filePath Путь к файлу, в который будет записана коллекция.
+     * @throws IOException Если произошла ошибка ввода-вывода при записи в файл.
+     */
     public void writeCollection(Vector<Worker> workersCollection, String filePath) throws IOException {
         if (!filePath.isEmpty()) {
             FileOutputStream fileOutputStream = new FileOutputStream(filePath);
@@ -46,10 +62,10 @@ public class CSVWriter {
                     fileOutputStream.write(line.getBytes());
                 }
                 fileOutputStream.close();
-                TerminalOutputManager.printLn("Коллекция сохранена в файл с путем " + filePath);
+                System.out.println("Коллекция сохранена в файл с путем " + filePath);
             } catch (IOException e) {
-                TerminalOutputManager.printError("Файл не может быть открыт по некой причине.");
+                OutputManager.printError("Файл не может быть открыт по некой причине.");
             }
-        } else TerminalOutputManager.printError("Файл поврежден или содержит ошибку в названии.");
+        } else OutputManager.printError("Файл поврежден или содержит ошибку в названии.");
     }
 }
