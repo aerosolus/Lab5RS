@@ -4,20 +4,22 @@ import controller.CommandInterface;
 import managers.ServerEntryPoint;
 
 /**
- * Команда, очищающая коллекцию.
+ * Команда, которая очищает коллекцию, удаляя все ее элементы.
+ * Реализует интерфейс {@link CommandInterface} для выполнения операции очистки коллекции.
  *
- * <p> Эта команда не принимает аргументов и удаляет все элементы из коллекции, очищая ее. </p>
+ * <p>Эта команда не принимает аргументов и полностью очищает коллекцию, управляемую
+ * {@link ServerEntryPoint#collectionManager}.</p>
  *
  * @author Aerosolus
- * @version 1.2
+ * @version 1.1
  * @since 2.0
  */
 public class ClearCommand implements CommandInterface {
 
     /**
-     * Returns a description of the command, combining the command name with its action.
+     * Возвращает описание команды, объединяя имя команды с ее действием.
      *
-     * @return A string describing the purpose of the command.
+     * @return Строка, описывающая назначение команды.
      */
     @Override
     public String getDescription() {
@@ -25,9 +27,9 @@ public class ClearCommand implements CommandInterface {
     }
 
     /**
-     * Returns the name of the command.
+     * Возвращает имя команды.
      *
-     * @return A string representing the name of the command.
+     * @return Строка, представляющая имя команды.
      */
     @Override
     public String getName() {
@@ -35,7 +37,8 @@ public class ClearCommand implements CommandInterface {
     }
 
     /**
-     * Executes the clear operation on the collection managed by ServerEntryPoint.
+     * Выполняет операцию очистки коллекции, управляемой {@link ServerEntryPoint#collectionManager}.
+     * Все элементы коллекции удаляются.
      */
     @Override
     public void execute() {

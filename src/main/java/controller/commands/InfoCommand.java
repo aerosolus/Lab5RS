@@ -5,20 +5,23 @@ import controller.CommandInterface;
 import managers.ServerEntryPoint;
 
 /**
- * Команда, реализующая вывод информации о коллекции в стандартный поток вывода.
+ * Команда, которая выводит информацию о коллекции в стандартный поток вывода.
+ * Реализует интерфейс {@link CommandInterface} для выполнения операции вывода информации о коллекции.
  *
- * <p> Эта команда не принимает аргументов и предоставляет общую информацию о состоянии коллекции. </p>
+ * <p>Эта команда не принимает аргументов. После её выполнения в стандартный поток вывода
+ * выводится общая информация о состоянии коллекции, такая как тип коллекции, количество элементов
+ * и дата инициализации.</p>
  *
  * @author Aerosolus
- * @version 1.2
+ * @version 1.1
  * @since 2.0
  */
 public class InfoCommand implements CommandInterface {
 
     /**
-     * Returns a description of the command, combining the command name with its action.
+     * Возвращает описание команды, объединяя имя команды с ее действием.
      *
-     * @return A string describing the purpose of the command.
+     * @return Строка, описывающая назначение команды.
      */
     @Override
     public String getDescription() {
@@ -26,9 +29,9 @@ public class InfoCommand implements CommandInterface {
     }
 
     /**
-     * Returns the name of the command.
+     * Возвращает имя команды.
      *
-     * @return A string representing the name of the command.
+     * @return Строка, представляющая имя команды.
      */
     @Override
     public String getName() {
@@ -36,7 +39,8 @@ public class InfoCommand implements CommandInterface {
     }
 
     /**
-     * Executes the info operation, displaying information about the collection.
+     * Выполняет команду "info". Выводит информацию о коллекции, такую как тип коллекции,
+     * количество элементов и дата инициализации, в стандартный поток вывода.
      */
     @Override
     public void execute() {

@@ -4,14 +4,22 @@ import controller.CommandInterface;
 import managers.ServerEntryPoint;
 
 /**
+ * Команда, которая выводит значения поля person всех элементов коллекции в порядке возрастания.
+ * Реализует интерфейс {@link CommandInterface} для выполнения операции вывода значений поля person.
+ *
+ * <p>Эта команда не принимает аргументов. После её выполнения в стандартный поток вывода
+ * выводятся значения поля `person` всех элементов коллекции, отсортированные в порядке возрастания.</p>
+ *
+ * @author Aerosolus
+ * @version 1.1
  * @since 2.0
  */
 public class PrintFieldAscendingPersonCommand implements CommandInterface {
 
     /**
-     * Returns a description of the command, combining the command name with its action.
+     * Возвращает описание команды, объединяя имя команды с ее действием.
      *
-     * @return A string describing the purpose of the command.
+     * @return Строка, описывающая назначение команды.
      */
     @Override
     public String getDescription() {
@@ -19,9 +27,9 @@ public class PrintFieldAscendingPersonCommand implements CommandInterface {
     }
 
     /**
-     * Returns the name of the command.
+     * Возвращает имя команды.
      *
-     * @return A string representing the name of the command.
+     * @return Строка, представляющая имя команды.
      */
     @Override
     public String getName() {
@@ -29,7 +37,8 @@ public class PrintFieldAscendingPersonCommand implements CommandInterface {
     }
 
     /**
-     * Executes the print descending car operation, displaying the values of the 'car' field for all elements in descending order.
+     * Выполняет команду "print_field_ascending_person". Выводит значения поля person
+     * всех элементов коллекции в порядке возрастания в стандартный поток вывода.
      */
     @Override
     public void execute(){

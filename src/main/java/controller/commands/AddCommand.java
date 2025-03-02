@@ -5,22 +5,36 @@ import data.Worker;
 import managers.ServerEntryPoint;
 
 /**
+ * Команда, которая добавляет новый элемент в коллекцию.
+ * Реализует интерфейс {@link CommandInterface} для выполнения операции добавления.
+ *
+ * <p>Этот класс принимает объект {@link Worker} и добавляет его в коллекцию, управляемую
+ * {@link ServerEntryPoint#collectionManager}.</p>
+ *
  * @author Aerosolus
  * @version 1.1
  * @since 2.0
  */
 public class AddCommand implements CommandInterface {
 
+    /**
+     * Объект {@link Worker}, который будет добавлен в коллекцию.
+     */
     private Worker worker;
 
+    /**
+     * Конструктор, который инициализирует команду с указанным объектом {@link Worker}.
+     *
+     * @param worker Объект {@link Worker}, который будет добавлен в коллекцию.
+     */
     public AddCommand(Worker worker) {
         this.worker = worker;
     }
 
     /**
-     * Returns a description of the command, combining the command name with its action.
+     * Возвращает описание команды, объединяя имя команды с ее действием.
      *
-     * @return A string describing the purpose of the command.
+     * @return Строка, описывающая назначение команды.
      */
     @Override
     public String getDescription() {
@@ -28,9 +42,9 @@ public class AddCommand implements CommandInterface {
     }
 
     /**
-     * Returns the name of the command.
+     * Возвращает имя команды.
      *
-     * @return A string representing the name of the command.
+     * @return Строка, представляющая имя команды.
      */
     @Override
     public String getName() {
@@ -38,7 +52,7 @@ public class AddCommand implements CommandInterface {
     }
 
     /**
-     * Executes the save operation on the collection managed by ServerEntryPoint.
+     * Выполняет операцию добавления элемента в коллекцию, управляемую {@link ServerEntryPoint#collectionManager}.
      */
     @Override
     public void execute() {

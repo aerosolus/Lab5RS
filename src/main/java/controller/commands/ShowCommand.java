@@ -4,16 +4,22 @@ import controller.CommandInterface;
 import managers.ServerEntryPoint;
 
 /**
+ * Команда, которая выводит все элементы коллекции в строковом представлении.
+ * Реализует интерфейс {@link CommandInterface} для выполнения операции вывода элементов коллекции.
+ *
+ * <p>Эта команда не принимает аргументов. После её выполнения в стандартный поток вывода
+ * выводятся все элементы коллекции в строковом представлении.</p>
+ *
  * @author Aerosolus
- * @version 1.2
+ * @version 1.1
  * @since 2.0
  */
 public class ShowCommand implements CommandInterface {
 
     /**
-     * Returns a description of the command, combining the command name with its action.
+     * Возвращает описание команды, объединяя имя команды с ее действием.
      *
-     * @return A string describing the purpose of the command.
+     * @return Строка, описывающая назначение команды.
      */
     @Override
     public String getDescription() {
@@ -21,9 +27,9 @@ public class ShowCommand implements CommandInterface {
     }
 
     /**
-     * Returns the name of the command.
+     * Возвращает имя команды.
      *
-     * @return A string representing the name of the command.
+     * @return Строка, представляющая имя команды.
      */
     @Override
     public String getName() {
@@ -31,7 +37,9 @@ public class ShowCommand implements CommandInterface {
     }
 
     /**
-     * Executes the show operation, displaying all elements of the collection in string representation.
+     * Выполняет команду "show". Выводит все элементы коллекции в строковом представлении
+     * в стандартный поток вывода. Управление коллекцией осуществляется через
+     * {@link ServerEntryPoint#collectionManager}.
      */
     @Override
     public void execute(){

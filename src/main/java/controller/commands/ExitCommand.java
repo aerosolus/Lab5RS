@@ -1,25 +1,26 @@
 package controller.commands;
 
-import client.Main;
 import controller.CommandInterface;
 
 import static client.Main.outputManager;
 
 /**
- * Команда, завершающая работу программы без сохранения данных в файл.
+ * Команда, которая завершает работу программы без сохранения данных в файл.
+ * Реализует интерфейс {@link CommandInterface} для выполнения операции завершения программы.
  *
- * <p> Эта команда не принимает аргументов. После её выполнения программа завершает свою работу. </p>
+ * <p>Эта команда не принимает аргументов. После её выполнения программа завершает свою работу
+ * без сохранения текущего состояния коллекции в файл.</p>
  *
  * @author Aerosolus
  * @version 1.1
- * @since 1.0
+ * @since 2.0
  */
 public class ExitCommand implements CommandInterface {
 
     /**
-     * Returns a description of the command, combining the command name with its action.
+     * Возвращает описание команды, объединяя имя команды с ее действием.
      *
-     * @return A string describing the purpose of the command.
+     * @return Строка, описывающая назначение команды.
      */
     @Override
     public String getDescription() {
@@ -27,16 +28,18 @@ public class ExitCommand implements CommandInterface {
     }
 
     /**
-     * Returns the name of the command.
+     * Возвращает имя команды.
      *
-     * @return A string representing the name of the command.
+     * @return Строка, представляющая имя команды.
      */
     @Override
     public String getName() {
         return "exit ";
     }
+
     /**
-     * Executes the exit operation, terminating the program immediately.
+     * Выполняет операцию завершения программы. После выполнения команды программа завершает свою работу
+     * с выводом соответствующего сообщения.
      */
     @Override
     public void execute() {

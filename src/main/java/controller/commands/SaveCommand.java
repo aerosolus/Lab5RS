@@ -4,10 +4,11 @@ import controller.CommandInterface;
 import managers.ServerEntryPoint;
 
 /**
- * Команда, сохраняющая текущее состояние коллекции в файл.
+ * Команда, которая сохраняет текущее состояние коллекции в файл.
+ * Реализует интерфейс {@link CommandInterface} для выполнения операции сохранения коллекции.
  *
- * <p> Эта команда не принимает аргументов и записывает данные коллекции в файл,
- * используя предоставленный {@link utility.CSVWriter}. </p>
+ * <p>Эта команда не принимает аргументов. После её выполнения текущее состояние коллекции
+ * записывается в файл с использованием предоставленного {@link utility.CSVWriter}.</p>
  *
  * @author Aerosolus
  * @version 1.1
@@ -16,9 +17,9 @@ import managers.ServerEntryPoint;
 public class SaveCommand implements CommandInterface {
 
     /**
-     * Returns a description of the command, combining the command name with its action.
+     * Возвращает описание команды, объединяя имя команды с ее действием.
      *
-     * @return A string describing the purpose of the command.
+     * @return Строка, описывающая назначение команды.
      */
     @Override
     public String getDescription() {
@@ -26,9 +27,9 @@ public class SaveCommand implements CommandInterface {
     }
 
     /**
-     * Returns the name of the command.
+     * Возвращает имя команды.
      *
-     * @return A string representing the name of the command.
+     * @return Строка, представляющая имя команды.
      */
     @Override
     public String getName() {
@@ -36,7 +37,8 @@ public class SaveCommand implements CommandInterface {
     }
 
     /**
-     * Executes the save operation on the collection managed by ServerEntryPoint.
+     * Выполняет команду "save". Сохраняет текущее состояние коллекции в файл.
+     * Управление коллекцией осуществляется через {@link ServerEntryPoint#collectionManager}.
      */
     @Override
     public void execute() {

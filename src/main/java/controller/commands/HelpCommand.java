@@ -5,12 +5,12 @@ import controller.CommandInterface;
 
 import java.util.ArrayList;
 
-
 /**
- * Команда, выводящая справку по доступным командам.
+ * Команда, которая выводит справку по доступным командам.
+ * Реализует интерфейс {@link CommandInterface} для выполнения операции вывода информации о командах.
  *
- * <p> Эта команда не принимает аргументов и выводит список всех доступных команд
- * с их описанием в стандартный поток вывода. </p>
+ * <p>Эта команда не принимает аргументов. После её выполнения в стандартный поток вывода
+ * выводится список всех доступных команд с их описанием.</p>
  *
  * @author Aerosolus
  * @version 1.1
@@ -19,9 +19,9 @@ import java.util.ArrayList;
 public class HelpCommand implements CommandInterface {
 
     /**
-     * Returns a description of the command, combining the command name with its action.
+     * Возвращает описание команды, объединяя имя команды с ее действием.
      *
-     * @return A string describing the purpose of the command.
+     * @return Строка, описывающая назначение команды.
      */
     @Override
     public String getDescription() {
@@ -29,9 +29,9 @@ public class HelpCommand implements CommandInterface {
     }
 
     /**
-     * Returns the name of the command.
+     * Возвращает имя команды.
      *
-     * @return A string representing the name of the command.
+     * @return Строка, представляющая имя команды.
      */
     @Override
     public String getName() {
@@ -39,10 +39,8 @@ public class HelpCommand implements CommandInterface {
     }
 
     /**
-     * Выполняет команду "help".
-     * Команда не принимает аргументов. Если аргумент передан, выбрасывается исключение
-     * {@link exceptions.IncorrectArgumentException}.
-     *
+     * Выполняет команду "help". Выводит список всех доступных команд с их описанием
+     * в стандартный поток вывода.
      */
     @Override
     public void execute() {

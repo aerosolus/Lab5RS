@@ -4,18 +4,38 @@ import controller.CommandInterface;
 import data.Worker;
 import managers.ServerEntryPoint;
 
+/**
+ * Команда, которая удаляет из коллекции все элементы, меньшие, чем заданный объект {@link Worker}.
+ * Реализует интерфейс {@link CommandInterface} для выполнения операции удаления элементов.
+ *
+ * <p>Эта команда принимает объект {@link Worker} в качестве аргумента и удаляет из коллекции
+ * все элементы, которые меньше заданного объекта. Сравнение элементов выполняется на основе
+ * их естественного порядка или определенного компаратора.</p>
+ *
+ * @author Aerosolus
+ * @version 1.1
+ * @since 2.0
+ */
 public class RemoveLowerCommand implements CommandInterface {
 
+    /**
+     * Объект {@link Worker}, используемый для сравнения с элементами коллекции.
+     */
     private Worker worker;
 
+    /**
+     * Конструктор, который инициализирует команду с указанным объектом {@link Worker}.
+     *
+     * @param worker Объект {@link Worker}, который будет использоваться для сравнения.
+     */
     public RemoveLowerCommand(Worker worker) {
         this.worker = worker;
     }
 
     /**
-     * Returns a description of the command, combining the command name with its action.
+     * Возвращает описание команды, объединяя имя команды с ее действием.
      *
-     * @return A string describing the purpose of the command.
+     * @return Строка, описывающая назначение команды.
      */
     @Override
     public String getDescription() {
@@ -23,9 +43,9 @@ public class RemoveLowerCommand implements CommandInterface {
     }
 
     /**
-     * Returns the name of the command.
+     * Возвращает имя команды.
      *
-     * @return A string representing the name of the command.
+     * @return Строка, представляющая имя команды.
      */
     @Override
     public String getName() {
@@ -33,8 +53,9 @@ public class RemoveLowerCommand implements CommandInterface {
     }
 
     /**
-     * Executes the remove lower operation,
-     * removing all elements from the collection that are lower than the given HumanBeing entity.
+     * Выполняет команду "remove_lower". Удаляет из коллекции все элементы, которые меньше
+     * заданного объекта {@link Worker}. Управление коллекцией осуществляется через
+     * {@link ServerEntryPoint#collectionManager}.
      */
     @Override
     public void execute() {

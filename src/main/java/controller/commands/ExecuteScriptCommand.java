@@ -4,35 +4,36 @@ import client.Main;
 import controller.CommandInterface;
 
 /**
- * Команда, выполняющая скрипт из указанного файла.
+ * Команда, которая выполняет скрипт из указанного файла.
+ * Реализует интерфейс {@link CommandInterface} для выполнения скрипта, содержащего последовательность команд.
  *
- * <p> Эта команда принимает в качестве аргумента имя файла скрипта, который необходимо выполнить.
- * Скрипт содержит последовательность команд, которые будут выполнены в порядке их записи. </p>
+ * <p>Эта команда принимает путь к файлу скрипта в качестве аргумента и выполняет команды,
+ * записанные в этом файле, в порядке их следования.</p>
  *
  * @author Aerosolus
- * @version 1.2
+ * @version 1.1
  * @since 2.0
  */
 public class ExecuteScriptCommand implements CommandInterface {
 
     /**
-     * The path to the script file to be executed.
+     * Путь к файлу скрипта, который должен быть выполнен.
      */
     private String filepath;
 
     /**
-     * Constructs an ExecuteScriptCommand instance with the specified path to the script file.
+     * Конструктор, который инициализирует команду с указанным путем к файлу скрипта.
      *
-     * @param filepath The path to the script file.
+     * @param filepath Путь к файлу скрипта.
      */
     public ExecuteScriptCommand(String filepath) {
         this.filepath = filepath;
     }
 
     /**
-     * Returns a description of the command, combining the command name with its action.
+     * Возвращает описание команды, объединяя имя команды с ее действием.
      *
-     * @return A string describing the purpose of the command.
+     * @return Строка, описывающая назначение команды.
      */
     @Override
     public String getDescription() {
@@ -40,9 +41,9 @@ public class ExecuteScriptCommand implements CommandInterface {
     }
 
     /**
-     * Returns the name of the command.
+     * Возвращает имя команды.
      *
-     * @return A string representing the name of the command.
+     * @return Строка, представляющая имя команды.
      */
     @Override
     public String getName() {
@@ -50,7 +51,8 @@ public class ExecuteScriptCommand implements CommandInterface {
     }
 
     /**
-     * Executes the script file specified in the constructor.
+     * Выполняет скрипт, указанный в поле {@code filepath}, с помощью {@link Main#inputManager}.
+     * Команды из файла выполняются последовательно.
      */
     @Override
     public void execute() {
